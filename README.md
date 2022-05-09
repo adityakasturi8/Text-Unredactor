@@ -1,1 +1,131 @@
-# cs5293sp22-project3
+> # Text Unredactor
+### Author : Aditya K Kasturi 
+
+__About:__
+- When classified information needs to be made available to the public, it must first be redacted. In this procedure, all sensitive names, locations, and other information are concealed. Documents containing sensitive information, such as names, incident reports, dispatch logs, and patient information, are often found.
+
+Predicting the names from already redacted files is often challenging. We must practice our machine learning model on large datasets if we want to identify the most reliable and best name. The Large Movie Review Dataset was used as my training dataset because it includes reviews of most famous movies.
+
+__Libraries and Packages Used:__
+- pandas
+- sklearn
+- DictVectorizer
+- RandomForestClassifier
+- pytest
+
+__system requirements:__
+- An instance with minimum of 8gb memory is required.
+- A working GPU for the machine learning model to run.
+- Make sure you have an active internet connection, as the data is extracted from Github.
+### Assumptions 
+- The unredactor.tsv raw url (github) is active and shall be available to use.
+- 
+
+### Bugs
+- Some of the tab seperated files in the ``` unredactor.tsv ``` are not accurately separated, and are irregular.
+- Some of the user's data have multiple redactions, and duplicates.
+- Data is uneven in few lines
+- I had to drop all the __NaN__ to make sure that the model works better.
+ ### Description
+
+__How to install and use this packages:__
+0. Require prior installation of python, pipenv, and pip
+2. gitclone my repository ```https://github.com/adityakasturi8/cs5293sp22-project3.git```
+3. cd into the project directory ```cs5293sp22-project3```
+4. install python package pipenv by typing ```pip install pipenv```
+5. run unit test using ```pipenv run python -m pytest```
+6. run the unredactor.py file using the below instructions
+
+__Running the Program:__
+- The program can be run by utilizing the commandline.
+- To run the program, go to the cs5293sp22-project3 folder
+- run the unredactor.py file 
+- An example on how to run the unredactor.py file is mentioned below
+  ```
+  pipenv run python unredactor.py
+  ``` 
+__Dataset:__
+- For this project, the dataset has be acquired from Stanford.edu 
+- The dataset can be found on ```https://ai.stanford.edu/~amaas/data/sentiment/```
+- unredactor.tsv file link can be found on ```https://raw.githubusercontent.com/cegme/cs5293sp22/main/unredactor.tsv ```
+- The above link has been used as training, validation, and testing our model.
+__Result:__
+- After running the unredactor.py file, the output geneted will be precision, recall, and f1 score of the randomforest classifer which was used for this project.
+- An example of the output is mentioned below
+```
+
+Precision:  0.0016885886953430503
+Recall:  0.004123711340206186
+F1 Score:  0.0020333507530048934
+Top 10 predictions:  ['Joan Crawford' 'Brosnan' 'Michael Madsen' 'Eddie Murphy' 'Denise Richards' 'Mehta' 'Joan Crawford'
+                     'Aidan Quinn' 'von Trier' 'Richard Rodney Bennet']
+
+```
+__Functions:__
+
+- In the unredactor.py file, There are four functions:
+
+0. __unredactor.py__ :  The unredactor.py file calls all the functions from unredactor.py and executes the flow of the project.
+                  The unredactor.py contains the following functions
+                  ```
+
+                check_length(sentence)
+
+                split_data(data)
+                 
+                feature_extraction(data)
+
+                randomforest_classifer()
+
+                  ```
+1. __check_length(sentence)__ : This function is made to know the length of the each name which has been redacted. it contains '█' which is essential to calculate each character length and stores the length of the it in a a column ```label_length```
+
+'''
+def check_length(sentence):
+    length = 0
+    for i in sentence:
+        if i == '█':
+            length += 1
+    return length
+'''
+
+
+The above image contains the first four rows of the dataframe. the last column contains the length of the each redacted label.
+
+
+
+2. __split_data(data)__: This function is used to split the data into training, validation, and testing after extracting it from the ``` unredactor.tsv ``` file. 
+
+```
+def split_data(data):
+    train_split = data.loc[data['type'] == 'training']
+    validation_split = data.loc[data['type'] == 'validation']
+    test_split = data.loc[data['type'] == 'testing']
+    return train_split, validation_split, test_split
+
+```
+
+3. __feature_extraction(data)__: This function utilizes for features extraction using dictionary vectorizer
+
+```
+def feature_extraction(data):
+    len_lst = list(data['label_length'])
+    
+    L = []
+    for i in range(len(data)):
+        D = {}
+        D['length'] = len_lst[i]
+        L.append(D)
+
+```
+Here, The ``` label_length ``` column is converted to a list and added to an object variable ``` len_lst ```. Creation of a list of dictionaries takes places, which has a key name as __length__ and value is the length of the each redacted name label.
+
+This feature helps to determine during the unredaction the length of charactes to expect and predict. 
+
+4. __randomforest_classifer()__:  
+
+
+__Test_Cases__:
+- Every test funtion is tested with a passing case
+1. for ```test_files(path)``` one passing case is tested with checking if the input file is returning or not 
+2. for ```test_tfidf_vectorizer()```  one passing case is tested if the data of ingredients entered by user is returning or not
