@@ -14,12 +14,15 @@ __Libraries and Packages Used:__
 - pytest
 
 __system requirements:__
+- The Text Analytics Final Annoucement states that the project can be evaulated using google instance, your personal machine, or the ou library jupyter hub instance. As a first possibility i would avoid using google instance and run in personal machine or jupyter hub instance
 - An instance with minimum of 8gb memory is required.
 - A working GPU for the machine learning model to run.
 - Make sure you have an active internet connection, as the data is extracted from Github.
+
+
 ### Assumptions 
 - The unredactor.tsv raw url (github) is active and shall be available to use.
-- 
+- Personal computer or ou library jupyter hub instance is used incase of failure in running the file on google console.
 
 ### Bugs
 - Some of the tab seperated files in the ``` unredactor.tsv ``` are not accurately separated, and are irregular.
@@ -28,13 +31,32 @@ __system requirements:__
 - I had to drop all the __NaN__ to make sure that the model works better.
  ### Description
 
-__How to install and use this packages:__
+__How to install and use this packages (for personal computer):__
+0. Require prior installation of python, and pip
+1. You can execute in the terminal or using VScode or using Jypter or any other IDE
+2. gitclone my repository ```https://github.com/adityakasturi8/cs5293sp22-project3.git```
+3. cd into the project directory in terminal ```cs5293sp22-project3```
+4. install python packages 
+                  - pip install sklearn
+                  - pip install pandas
+                  - pip install DictVectorizer 
+                  - pip install pytest
+                  
+6. run unit test using ``` python pytest```
+7. run the unredactor.py file by typing ``` python unredactor.py ```
+
+
+__How to install and use this packages (for google console):__
 0. Require prior installation of python, pipenv, and pip
 2. gitclone my repository ```https://github.com/adityakasturi8/cs5293sp22-project3.git```
 3. cd into the project directory ```cs5293sp22-project3```
 4. install python package pipenv by typing ```pip install pipenv```
 5. run unit test using ```pipenv run python -m pytest```
 6. run the unredactor.py file using the below instructions
+
+### Possible errors to expect when running it using google console
+1. __No moudle Found: _ctype__: To fix the error enter the command ```sudo apt-get install libffi-dev``` . This should mostly resolve the issue, if still facing it, please run the fine on your personal computer or jupyter instance. 
+
 
 __Running the Program:__
 - The program can be run by utilizing the commandline.
