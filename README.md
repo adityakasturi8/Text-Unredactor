@@ -58,13 +58,22 @@ __How to install and use this packages (for google console):__
 1. __No moudle Found: _ctype__: To fix the error enter the command ```sudo apt-get install libffi-dev``` . This should mostly resolve the issue, if still facing it, please run the fine on your personal computer or jupyter instance. 
 
 
-__Running the Program:__
+__Running the Program (google console):__
 - The program can be run by utilizing the commandline.
 - To run the program, go to the cs5293sp22-project3 folder
 - run the unredactor.py file 
 - An example on how to run the unredactor.py file is mentioned below
   ```
   pipenv run python unredactor.py
+  ``` 
+  
+  __Running the Program (personal computer):__
+- The program can be run by utilizing the commandline.
+- To run the program, go to the cs5293sp22-project3 folder
+- run the unredactor.py file 
+- An example on how to run the unredactor.py file is mentioned below
+  ```
+  python unredactor.py
   ``` 
 __Dataset:__
 - For this project, the dataset has be acquired from Stanford.edu 
