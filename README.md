@@ -176,5 +176,22 @@ def randomforest_classifer(train_split_feature_extracted,train_split,validation_
 
 __Test_Cases__:
 - Every test funtion is tested with a passing case
-1. for ```test_files(path)``` one passing case is tested with checking if the input file is returning or not 
-2. for ```test_tfidf_vectorizer()```  one passing case is tested if the data of ingredients entered by user is returning or not
+- 
+1. for ```test_check_length()``` one passing case is tested by Checking  if the length of the unredactor.unredactor string is equal to 1, and assert True if is is equal to 1. 
+```
+def test_check_length():
+    if unredactor.check_length('█') == 1:
+        assert True
+```
+
+2. for ```test_split_data()```  The test_split_data() function checks that the train_split, validation_split, and test_split DataFrames have the same column names as the original data DataFrame.
+
+```
+def test_split_data():
+    
+    train_split, validation_split, test_split = unredactor.split_data(data)
+    assert train_split.columns.tolist() == validation_split.columns.tolist() == test_split.columns.tolist() == data.columns.tolist()
+
+```
+
+
