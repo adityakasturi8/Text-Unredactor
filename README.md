@@ -194,4 +194,9 @@ def test_split_data():
 
 ```
 
+__Additional Work__:
 
+- I have tried to fit the model on varous machine learning, and deep learning model like SGDClassifer, MLPClassifier, SVM, KNN, and MultinomialNB. Certainly, RandomForest was the best fit for my models.
+- I have also used CountVectorizer() and TfidfVectorizer() duing the process. However, Dictionary vectorizer worked the best for my model.
+- Initially, I have created a .pkl file which was trained on the IMDB Large Movie Dataset, However due to huge amount of data and limited computational power, and unstable redacted data, i was unable to produce results on that. So i tried the alternative approach which is the above. 
+- I also tried to use Transformers for better predictions, However my GPU crashes during the process. 
