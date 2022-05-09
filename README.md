@@ -12,6 +12,7 @@ __Libraries and Packages Used:__
 - DictVectorizer
 - RandomForestClassifier
 - pytest
+- warnings
 
 __system requirements:__
 - The Text Analytics Final Annoucement states that the project can be evaulated using google instance, your personal machine, or the ou library jupyter hub instance. As a first possibility i would avoid using google instance and run in personal machine or jupyter hub instance
@@ -63,6 +64,7 @@ __Running the Program (google console):__
 - To run the program, go to the cs5293sp22-project3 folder
 - run the unredactor.py file 
 - An example on how to run the unredactor.py file is mentioned below
+
   ```
   pipenv run python unredactor.py
   ``` 
@@ -111,14 +113,14 @@ __Functions:__
                   ```
 1. __check_length(sentence)__ : This function is made to know the length of the each name which has been redacted. it contains '█' which is essential to calculate each character length and stores the length of the it in a a column ```label_length```
 
-'''
+```
 def check_length(sentence):
     length = 0
     for i in sentence:
         if i == '█':
             length += 1
     return length
-'''
+```
 ![image](https://user-images.githubusercontent.com/95768375/167355639-08cde250-5f58-49cb-aaf8-5ff3122c0a06.png)
 
 
