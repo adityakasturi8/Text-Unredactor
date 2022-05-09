@@ -48,11 +48,11 @@ __How to install and use this packages (for personal computer):__
 
 __How to install and use this packages (for google console):__
 0. Require prior installation of python, pipenv, and pip
-2. gitclone my repository ```https://github.com/adityakasturi8/cs5293sp22-project3.git```
-3. cd into the project directory ```cs5293sp22-project3```
-4. install python package pipenv by typing ```pip install pipenv```
-5. run unit test using ```pipenv run python -m pytest```
-6. run the unredactor.py file using the below instructions
+1. gitclone my repository ```https://github.com/adityakasturi8/cs5293sp22-project3.git```
+2. cd into the project directory ```cs5293sp22-project3```
+3. install python package pipenv by typing ```pip install pipenv```
+4. run unit test using ```pipenv run python -m pytest```
+5. run the unredactor.py file using the below instructions
 
 ### Possible errors to expect when running it using google console
 1. __No moudle Found: _ctype__: To fix the error enter the command ```sudo apt-get install libffi-dev``` . This should mostly resolve the issue, if still facing it, please run the fine on your personal computer or jupyter instance. 
@@ -154,8 +154,23 @@ Here, The ``` label_length ``` column is converted to a list and added to an obj
 
 This feature helps to determine during the unredaction the length of charactes to expect and predict. 
 
-4. __randomforest_classifer()__:  
+4. __randomforest_classifer()__: This fuction calls the machine learning model RandomForestClassifer from the Sci-kit learn library and performs the following operations.  
 
+```
+def randomforest_classifer(train_split_feature_extracted,train_split,validation_split_feature_extracted,test_split_feature_extracted):
+    model = RandomForestClassifier(n_estimators = 500,criterion = 'entropy',max_features = 'auto',min_samples_leaf = 1,min_samples_split = 2,n_jobs = 1,random_state = 42)
+    model.fit(train_split_feature_extracted, train_split['labels'])
+    predicted_test_split = model.predict(test_split_feature_extracted)
+    print("Precision: ", precision_score(test_split['labels'], predicted_test_split, average='macro'))
+    print("Recall: ", recall_score(test_split['labels'], predicted_test_split, average='macro'))
+    print("F1 Score: ", f1_score(test_split['labels'], predicted_test_split, average='macro'))
+    print("Top 10 predictions: ", model.predict(test_split_feature_extracted)[:10])
+ 
+ ```
+
+- The above python code defines a random forest Classifier. This classifier is then used to train the model on the train_split_feature_extracted dataset.
+- The model is then used to predict the labels on the test_split_feature_extracted dataset. Finally, the precision,recall, and f1 score of the predictions is printed.
+- It also prints the Top 10 predictions which contains the predicted names.
 
 __Test_Cases__:
 - Every test funtion is tested with a passing case
