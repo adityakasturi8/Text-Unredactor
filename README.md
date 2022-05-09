@@ -55,7 +55,7 @@ __How to install and use this packages (for google console):__
 4. run unit test using ```pipenv run python -m pytest```
 5. run the unredactor.py file using the below instructions
 
-### Possible errors to expect when running it using google console
+__Possible errors to expect when running it using google console:__
 1. __No moudle Found: _ctype__: To fix the error enter the command ```sudo apt-get install libffi-dev``` . This should mostly resolve the issue, if still facing it, please run the fine on your personal computer or jupyter instance. 
 
 
