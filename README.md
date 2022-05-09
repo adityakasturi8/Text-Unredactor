@@ -88,6 +88,7 @@ def check_length(sentence):
             length += 1
     return length
 '''
+![image](https://user-images.githubusercontent.com/95768375/167355639-08cde250-5f58-49cb-aaf8-5ff3122c0a06.png)
 
 
 The above image contains the first four rows of the dataframe. the last column contains the length of the each redacted label.
